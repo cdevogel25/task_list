@@ -31,18 +31,20 @@ export default class Layout extends React.Component {
         console.log('props', this.props)
     }
 
+
     handleClick(param) {
+        let action = this.props.actions
         switch (param) {
             case 'add':
-                this.props.actions.addTask(this.refs.addTask.value)
+                action.addTask(this.refs.addTask.value)
                 this.refs.addTask.value = ''
                 break
             case 'complete':
-                this.props.actions.completeTask(this.refs.completeTask.value)
+                action.completeTask(this.refs.completeTask.value)
                 this.refs.completeTask.value = ''
                 break
             case 'delete':
-                this.props.actions.deleteTask(this.refs.deleteTask.value)
+                action.deleteTask(this.refs.deleteTask.value)
                 this.refs.deleteTask.value = ''
                 break
         }
