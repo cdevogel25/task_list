@@ -3,21 +3,6 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actionCreators from '../actions/actions'
 
-// function mapStateToProps(state) {
-//     return {
-//         tasks: (state) ? state.tasks : [],
-//         finished: (state) ? state.finished : []
-//     }
-// }
-//
-// function mapDispatchToProps(dispatch) {
-//     return {
-//         actions: bindActionCreators(actionCreators, dispatch)
-//     }
-// }
-
-// @connect(mapStateToProps, mapDispatchToProps)
-
 @connect(state => ({
     tasks: (state) ? state.tasks : [],
     finished: (state) ? state.finished : []
