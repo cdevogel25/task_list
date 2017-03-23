@@ -19,7 +19,7 @@ export default function reducer(state={
             }
         case 'DELETE_TASK':
             index = state.tasks.indexOf(action.payload)
-            newTasks = state.taskList.slice()
+            newTasks = state.tasks.slice()
             newTasks.splice(index, 1)
 
             return {
