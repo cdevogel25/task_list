@@ -2,7 +2,8 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actionCreators from '../actions/actions'
-import {update} from '../db/db.actions'
+import {writeTasks} from '../db/db'
+//import {update} from '../db/db.actions'
 
 @connect(state => ({
     tasks: (state) ? state.tasks : [],
@@ -36,11 +37,15 @@ export default class Layout extends React.Component {
         }
     }
 
+    handleUpdate() {
+        writeTasks(this.props.tasks, this.props.finished)
+    }
+
     render() {
         const {tasks, finished, actions} = this.props
 
-        const mapTasks = tasks.map(task => <li>{task}</li>)
-        const mapFinished = finished.map(finished => <li>{finished}</li>)
+        const mapTasks = tasks.map(task => <li>{task.name}</li>)
+        const mapFinished = finished.map(finished => <li>{finished.name}</li>)
 
         return (
             <div>
@@ -55,7 +60,7 @@ export default class Layout extends React.Component {
                     <input type="submit" value="Complete Task" onClick={this.handleClick.bind(this, 'complete')}/><br/>
                     <input ref="deleteTask" type="text" id="deleteBox" />
                     <input type="submit" value="Delete Task" onClick={this.handleClick.bind(this, 'delete')}/><br/>
-                    <button id="update">Update</button>
+                    <input type="button" value="Update DB" onClick={this.handleUpdate.bind(this)}/>
                 </div>
             </div>
         )
