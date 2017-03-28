@@ -1,0 +1,25 @@
+#login {
+    font-family: 'Alef';
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 50%;
+    border: 3px solid black;
+    padding: 10px;
+    text-align: center;
+}
+
+.textBox {
+    border-color: #5B9B88;
+    border-width: 1px;
+}
+
+#logo {
+    margin: auto;
+    text-align: center;
+    font-family: 'Alef';
+}
+
+body {
+    background-color: #B4D5CB;
+}
