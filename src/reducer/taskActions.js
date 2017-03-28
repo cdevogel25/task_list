@@ -1,8 +1,9 @@
 export function updateComplete(list, done) {
-    if(done.length) {
+    if(done) {
         list.forEach((item) => {
             if(item.complete) {
-                done.push(list.splice(list.indexOf(item), 1))
+                done.push(item)
+                list.splice(list.indexOf(item), 1)
             }
         })
     }
