@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 import * as actionCreators from '../actions/actions'
+import {update} from '../db/db.actions'
 
 @connect(state => ({
     tasks: (state) ? state.tasks : [],
@@ -16,21 +17,21 @@ export default class Layout extends React.Component {
         console.log('props', this.props)
     }
 
-
     handleClick(param) {
         let action = this.props.actions
+        let ref = this.refs
         switch (param) {
             case 'add':
-                action.addTask(this.refs.addTask.value)
-                this.refs.addTask.value = ''
+                action.addTask(ref.addTask.value)
+                ref.addTask.value = ''
                 break
             case 'complete':
-                action.completeTask(this.refs.completeTask.value)
-                this.refs.completeTask.value = ''
+                action.completeTask(ref.completeTask.value)
+                ref.completeTask.value = ''
                 break
             case 'delete':
-                action.deleteTask(this.refs.deleteTask.value)
-                this.refs.deleteTask.value = ''
+                action.deleteTask(ref.deleteTask.value)
+                ref.deleteTask.value = ''
                 break
         }
     }
@@ -54,6 +55,7 @@ export default class Layout extends React.Component {
                     <input type="submit" value="Complete Task" onClick={this.handleClick.bind(this, 'complete')}/><br/>
                     <input ref="deleteTask" type="text" id="deleteBox" />
                     <input type="submit" value="Delete Task" onClick={this.handleClick.bind(this, 'delete')}/><br/>
+                    <button id="update">Update</button>
                 </div>
             </div>
         )

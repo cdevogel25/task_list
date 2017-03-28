@@ -1,9 +1,5 @@
 import {updateComplete} from './taskActions'
 
-function makeTask(name) {
-    return {name: name, complete: false}
-}
-
 export default function reducer(state={
     tasks: [],
     finished: [],
@@ -13,9 +9,9 @@ export default function reducer(state={
         case 'ADD_TASK':
             newTasks = [...state.tasks]
             if(newTasks.length) {
-                newTasks.push(makeTask(action.payload))
+                newTasks.push(action.payload)
             } else {
-                newTasks = [makeTask(action.payload)]
+                newTasks = [action.payload]
             }
             return {
                 ...state,
@@ -41,7 +37,7 @@ export default function reducer(state={
             })
             return {
                 ...state,
-                finished: updateComplete(unfinished, [...state.finished]),
+                finished: updateComplete(unfinished, ...state.finished)
                 tasks: unfinished
             }
     }
